@@ -1,0 +1,13 @@
+{
+  "resourceName": "wastepictures2024",
+  "policyUUID": "c7df8a03",
+  "bucketName": "wastepictures2024",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

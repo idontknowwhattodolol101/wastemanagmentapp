@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/waste": {
+      "name": "/waste",
+      "lambdaFunction": "wastemanagmentapiyoutube2",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

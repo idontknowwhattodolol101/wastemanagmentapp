@@ -1,0 +1,26 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-wastemanagmentapp-dev-0fbf7-authRole",
+      "UnauthRoleArn": "arn:aws:iam::084375567719:role/amplify-wastemanagmentapp-dev-0fbf7-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::084375567719:role/amplify-wastemanagmentapp-dev-0fbf7-authRole",
+      "Region": "eu-west-2",
+      "DeploymentBucketName": "amplify-wastemanagmentapp-dev-0fbf7-deployment",
+      "UnauthRoleName": "amplify-wastemanagmentapp-dev-0fbf7-unauthRole",
+      "StackName": "amplify-wastemanagmentapp-dev-0fbf7",
+      "StackId": "arn:aws:cloudformation:eu-west-2:084375567719:stack/amplify-wastemanagmentapp-dev-0fbf7/8168e9b0-95f4-11ef-8e00-0205a9f72d57",
+      "AmplifyAppId": "d18f12gqwwj1wz"
+    },
+    "categories": {
+      "auth": {
+        "wastemanagmentapp7a5a95bb": {}
+      },
+      "storage": {
+        "wastepictures2024": {}
+      },
+      "function": {
+        "wastemanagmentapiyoutube2": {}
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+.waste-manager {
+    text-align: center;
+}
+
+.image-preview img {
+    max-width: 300px;
+    max-height: 300px;
+    margin-top: 20px;
+}
+
+.output-message {
+    color: green;
+    font-size: 1.5rem;
+    margin-top: 20px;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.output-message.transition {
+    opacity: 1;
+}
+
+.error-message {
+    color: red;
+    font-size: 1rem;
+    margin-top: 20px;
+}
