@@ -1,6 +1,6 @@
 {
   "api": {
-    "wastemanagmentapiyoutube": {
+    "wastemanagementapiyoutube": {
       "dependsOn": [
         {
           "attributes": [
@@ -8,7 +8,7 @@
             "Arn"
           ],
           "category": "function",
-          "resourceName": "wastemanagmentapiyoutube2"
+          "resourceName": "wastemanagmentfunctionyoutube2"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -44,7 +44,7 @@
     }
   },
   "function": {
-    "wastemanagmentapiyoutube2": {
+    "wastemanagmentfunctionyoutube2": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
