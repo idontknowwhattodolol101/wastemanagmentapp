@@ -1,6 +1,6 @@
 export type AmplifyDependentResourcesAttributes = {
   "api": {
-    "wastemanagmentapiyoutube": {
+    "wastemanagementapiyoutube": {
       "ApiId": "string",
       "ApiName": "string",
       "RootUrl": "string"
