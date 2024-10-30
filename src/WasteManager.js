@@ -56,8 +56,9 @@ function WasteManager() {
 
     // Function to call the API and check recyclability
     const checkRecyclability = async (fileName) => {
-        const apiName = 'wasteapp'; // API name from Amplify config
-        const path = '/items'; // API Gateway resource path
+        const apiName = 'wastemanagementapiyoutube'; // API name from Amplify config
+        const path = '/post'; // API Gateway resource path
+
 
         const init = {
             body: {
