@@ -17,11 +17,11 @@ resources.addCfnResource(
           [
             "arn:aws:execute-api:",
             {
-              "Ref": "eu-west-2"
+              "Ref": "AWS::Region"
             },
             ":",
             {
-              "Ref": "084375567719"
+              "Ref": "AWS::AccountId"
             },
             ":",
             {
