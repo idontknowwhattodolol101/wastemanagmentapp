@@ -9,7 +9,7 @@ resources.addCfnResource(
     type: "AWS::Lambda::Permission",
     properties: {
       Action: "lambda:InvokeFunction",
-      FunctionName: {"Ref": "<wastemanagmentfunctionyoutube2>"},
+      FunctionName: {"Ref": "<wastemanagmentfunctionyoutube2-main>"},
       Principal: "apigateway.amazonaws.com",
       SourceArn:{
         "Fn::Join": [
