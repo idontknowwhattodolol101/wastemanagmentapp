@@ -4,7 +4,7 @@
       "Action": [
           "rekognition:DetectLabels"
       ],
-      "Resource": "*"
+      "Resource": ["*"]
   },
   {
       "Effect": "Allow",
@@ -13,13 +13,13 @@
           "dynamodb:GetItem",
           "dynamodb:UpdateItem"
       ],
-      "Resource": "arn:aws:dynamodb:eu-west-2:084375567719:table/wastedata"
+      "Resource": ["arn:aws:dynamodb:eu-west-2:084375567719:table/wastedata"]
   },
   {
       "Effect": "Allow",
       "Action": [
           "s3:GetObject"
       ],
-      "Resource": "arn:aws:s3:::wastepictures20240fbf7-dev/*"
+      "Resource": ["arn:aws:s3:::wastepictures20240fbf7-dev/*"]
   }
 ]
