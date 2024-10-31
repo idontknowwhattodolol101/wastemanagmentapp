@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { uploadData } from 'aws-amplify/storage';
-import { post } from 'aws-amplify/api';
+import { API } from 'aws-amplify';
+import { withAuthenticator } from '@aws-amplify/ui-react'; // Use withAuthenticator for authentication
 import './WasteManager.css'; // Import the CSS file for styling
 
-function WasteManager() {
+function WasteManager({ user }) {
     const [selectedImage, setSelectedImage] = useState(null);
     const [uploadSuccess, setUploadSuccess] = useState(false);
     const [error, setError] = useState(null);
@@ -45,7 +46,12 @@ function WasteManager() {
 
             // Call the API after successful upload
             const apiResponse = await checkRecyclability(fileName);
-            setResponseMessage(apiResponse.message); // Display Lambda response message
+            if (apiResponse) {
+                setResponseMessage(`Recyclability: ${apiResponse.RecyclabilityStatement}`); // Display Lambda response message
+            } else {
+                setResponseMessage("Could not determine recyclability."); // Default message
+            }
+
             setSelectedImage(null); // Clear the selected image after upload
         } catch (err) {
             console.error("Error uploading file: ", err);
@@ -56,9 +62,8 @@ function WasteManager() {
 
     // Function to call the API and check recyclability
     const checkRecyclability = async (fileName) => {
-        const apiName = 'wastemanagementapiyoutube'; // API name from Amplify config
-        const path = '/post'; // API Gateway resource path
-
+        const apiName = 'wastemanagementapiyoutube'; // Your API name from Amplify config
+        const path = '/waste'; // API Gateway resource path
 
         const init = {
             body: {
@@ -70,12 +75,12 @@ function WasteManager() {
         };
 
         try {
-            const response = await post(apiName, path, init);
+            const response = await API.post(apiName, path, init);
             console.log('API Response:', response); // Debugging
             return response; // Return the response for further use
         } catch (error) {
             console.error("Error calling API:", error);
-            return { message: "Error checking recyclability." }; // Default error message
+            return null; // Default error message
         }
     };
 
@@ -115,4 +120,5 @@ function WasteManager() {
     );
 }
 
-export default WasteManager;
+// Export the component wrapped with the Authenticator
+export default withAuthenticator(WasteManager);
