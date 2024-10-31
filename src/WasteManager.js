@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { uploadData } from 'aws-amplify/storage';
-import { API } from 'aws-amplify';
 import { withAuthenticator } from '@aws-amplify/ui-react'; // Use withAuthenticator for authentication
 import './WasteManager.css'; // Import the CSS file for styling
+import axios from 'axios'; // Import axios for API calls
 
 function WasteManager({ user }) {
     const [selectedImage, setSelectedImage] = useState(null);
@@ -62,24 +62,23 @@ function WasteManager({ user }) {
 
     // Function to call the API and check recyclability
     const checkRecyclability = async (fileName) => {
-        const apiName = 'wastemanagementapiyoutube'; // Your API name from Amplify config
-        const path = '/waste'; // API Gateway resource path
-
-        const init = {
-            body: {
-                fileName: fileName // Send the file name to the Lambda function
-            },
-            headers: {
-                "Content-Type": "application/json",
-            },
+        const apiUrl = 'https://gy9oxroiz7.execute-api.eu-west-2.amazonaws.com/main/waste'; // Your API Gateway URL
+        
+        const data = {
+            fileName: fileName // Send the file name to the Lambda function
         };
 
         try {
-            const response = await API.post(apiName, path, init);
-            console.log('API Response:', response); // Debugging
-            return response; // Return the response for further use
+            const response = await axios.post(apiUrl, data, {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+            console.log('API Response:', response.data); // Debugging
+            return response.data; // Return the response for further use
         } catch (error) {
             console.error("Error calling API:", error);
+            setResponseMessage("Error contacting the API.");
             return null; // Default error message
         }
     };
