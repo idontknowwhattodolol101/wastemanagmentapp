@@ -22,5 +22,8 @@
         "wastemanagmentfunctionyoutube2": {}
       }
     }
+  },
+  "main": {
+    "awscloudformation": {}
   }
 }

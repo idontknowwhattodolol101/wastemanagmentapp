@@ -44,6 +44,11 @@
     }
   },
   "function": {
+    "RetriveWasteAnalysis": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "wastemanagmentfunctionyoutube2": {
       "build": true,
       "providerPlugin": "awscloudformation",
