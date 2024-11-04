@@ -79,7 +79,7 @@ function App() {
             <main>
               <header className="App-header">
                 <img src={logo} alt="Smart Waste Logo" style={{ width: '150px', marginBottom: '20px' }} />
-                <h1>Smart Waste Management App</h1>
+                <h1>WasteWise</h1>
                 <WasteManager />
                 <button 
                   onClick={signOut} 
