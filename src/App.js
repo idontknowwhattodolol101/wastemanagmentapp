@@ -60,6 +60,11 @@ const theme = {
 };
 
 function App() {
+  const handleFileChange = (event) => {
+    // Handle file selection
+    console.log(event.target.files[0]); // Example: logging the selected file
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <div 
@@ -81,6 +86,13 @@ function App() {
                 <img src={logo} alt="Smart Waste Logo" className="logo" />
                 <h1 className="title">WasteWise</h1>
                 <p className="subtitle">one click closer to a greener tomorrow</p>
+
+                {/* File Upload Section */}
+                <label className="file-upload-label">
+                  Choose File
+                  <input type="file" onChange={handleFileChange} />
+                </label>
+
                 <WasteManager />
                 <button 
                   onClick={signOut} 
