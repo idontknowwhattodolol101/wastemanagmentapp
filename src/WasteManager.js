@@ -94,7 +94,9 @@ function WasteManager({ user }) {
             />
             {selectedImage && (
                 <div className="image-preview">
-                    <img src={URL.createObjectURL(selectedImage)} alt="Preview" className="image-thumbnail" />
+                    <div className="image-container">
+                        <img src={URL.createObjectURL(selectedImage)} alt="Preview" className="image-thumbnail" />
+                    </div>
                     <button onClick={handleUpload} className="upload-button">
                         Upload Image
                     </button>
