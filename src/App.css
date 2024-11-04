@@ -4,12 +4,17 @@
 .App {
   text-align: center;
   background-color: #f3f9f1; /* Light green background for eco-friendly vibe */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Logo Animation */
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+  margin-bottom: 20px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -29,8 +34,8 @@
 
 /* Header styling */
 .App-header {
-  background-color: #4a8d5f; /* Dark green header for a nature-inspired look */
-  min-height: 100vh;
+  background-color: rgba(74, 141, 95, 0.9); /* Semi-transparent dark green header */
+  min-height: 80vh; /* Adjusted height for a better view */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -40,6 +45,30 @@
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Authenticator card styling */
+.amplify-authenticator {
+  background: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Inputs and Button styles */
+.amplify-input {
+  border-radius: 10px;
+  margin-bottom: 15px; /* Spacing between inputs */
+  padding: 10px;
+}
+
+.amplify-button {
+  background-color: #4CAF50; /* Green for buttons */
+  border-radius: 20px; /* Round buttons */
+}
+
+.amplify-button:hover {
+  background-color: #388e3c; /* Darker green on hover */
 }
 
 /* Links styling */
