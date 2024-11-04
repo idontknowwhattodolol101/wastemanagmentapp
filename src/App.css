@@ -10,6 +10,28 @@
   justify-content: center;
 }
 
+/* Logo Styling */
+.logo {
+  width: 180px; /* Larger logo */
+  margin-bottom: 20px;
+}
+
+/* Title Styling */
+.title {
+  font-size: 2.5rem; /* Adjust size as needed */
+  color: #2d5a34; /* Dark green color for title */
+  margin-bottom: 5px;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Subtitle (Slogan) Styling */
+.subtitle {
+  font-size: 1rem; /* Smaller font size for slogan */
+  color: #2d5a34; /* Matching color for cohesion */
+  font-style: italic; /* Italic for emphasis */
+  margin-bottom: 20px;
+}
+
 /* Logo Animation */
 .App-logo {
   height: 40vmin;
@@ -35,7 +57,7 @@
 /* Header styling */
 .App-header {
   background-color: rgba(74, 141, 95, 0.9); /* Semi-transparent dark green header */
-  min-height: 80vh; /* Adjusted height for a better view */
+  min-height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -49,7 +71,7 @@
 
 /* Authenticator card styling */
 .amplify-authenticator {
-  background: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 15px;
   padding: 30px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
@@ -58,17 +80,17 @@
 /* Inputs and Button styles */
 .amplify-input {
   border-radius: 10px;
-  margin-bottom: 15px; /* Spacing between inputs */
+  margin-bottom: 15px;
   padding: 10px;
 }
 
 .amplify-button {
-  background-color: #4CAF50; /* Green for buttons */
-  border-radius: 20px; /* Round buttons */
+  background-color: #4CAF50;
+  border-radius: 20px;
 }
 
 .amplify-button:hover {
-  background-color: #388e3c; /* Darker green on hover */
+  background-color: #388e3c;
 }
 
 /* Links styling */
@@ -88,13 +110,13 @@
   margin: 20px auto;
   padding: 30px;
   border-radius: 15px;
-  background-color: #fff; /* White background for contrast */
+  background-color: #fff;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .home h1 {
   font-size: 2.5rem;
-  color: #2d5a34; /* Dark green for headings */
+  color: #2d5a34;
   margin-bottom: 15px;
   font-family: 'Roboto', sans-serif;
 }
@@ -112,7 +134,7 @@ button {
   padding: 12px 24px;
   font-size: 1rem;
   color: white;
-  background-color: #4CAF50; /* Green button for eco-friendly feel */
+  background-color: #4CAF50;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -120,11 +142,11 @@ button {
 }
 
 button:hover {
-  background-color: #45a049; /* Darker green on hover */
+  background-color: #45a049;
 }
 
 button:disabled {
-  background-color: #b3d3b0; /* Light green when disabled */
+  background-color: #b3d3b0;
   cursor: not-allowed;
 }
 
@@ -138,22 +160,22 @@ input[type="file"] {
 
 /* Image Display Section */
 .image-container {
-    max-width: 100%; /* Responsive width */
-    height: 300px; /* Fixed height for consistency */
-    overflow: hidden; /* Hide overflow if image exceeds dimensions */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow for better visibility */
-    background-color: #fff; /* White background for contrast */
-    display: flex; /* Flexbox for centering the image */
-    align-items: center; /* Center image vertically */
-    justify-content: center; /* Center image horizontally */
-    margin-top: 20px; /* Space above the image preview */
+  max-width: 100%;
+  height: 300px;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .image-container img {
-    max-width: 100%; /* Image should fit within the container */
-    height: auto; /* Maintain aspect ratio */
-    object-fit: cover; /* Cover the container without distortion */
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
 /* Responsive Design */

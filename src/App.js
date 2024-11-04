@@ -78,8 +78,9 @@ function App() {
           {({ signOut }) => (
             <main>
               <header className="App-header">
-                <img src={logo} alt="Smart Waste Logo" style={{ width: '150px', marginBottom: '20px' }} />
-                <h1>WasteWise</h1>
+                <img src={logo} alt="Smart Waste Logo" className="logo" />
+                <h1 className="title">WasteWise</h1>
+                <p className="subtitle">one click closer to a greener tomorrow</p>
                 <WasteManager />
                 <button 
                   onClick={signOut} 
