@@ -1,9 +1,7 @@
-/* App.css */
-
 /* General App styling */
 .App {
   text-align: center;
-  background-color: #f3f9f1; /* Light green background for eco-friendly vibe */
+  background-color: #f3f9f1; 
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -12,23 +10,23 @@
 
 /* Logo Styling */
 .logo {
-  width: 180px; /* Larger logo */
+  width: 180px; /
   margin-bottom: 20px;
 }
 
 /* Title Styling */
 .title {
-  font-size: 2.5rem; /* Adjust size as needed */
-  color: #2d5a34; /* Dark green color for title */
+  font-size: 2.5rem; 
+  color: #cfe4d2; 
   margin-bottom: 5px;
   font-family: 'Roboto', sans-serif;
 }
 
 /* Subtitle (Slogan) Styling */
 .subtitle {
-  font-size: 1rem; /* Smaller font size for slogan */
-  color: #2d5a34; /* Matching color for cohesion */
-  font-style: italic; /* Italic for emphasis */
+  font-size: 1rem; 
+  color: #cfe4d2; 
+  font-style: italic; 
   margin-bottom: 20px;
 }
 
@@ -56,7 +54,7 @@
 
 /* Header styling */
 .App-header {
-  background-color: rgba(74, 141, 95, 0.9); /* Semi-transparent dark green header */
+  background-color: rgba(74, 141, 95, 0.9); 
   min-height: 80vh;
   display: flex;
   flex-direction: column;
