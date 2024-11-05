@@ -1,8 +1,9 @@
+// WasteManager.js
 import React, { useState } from 'react';
 import { uploadData } from 'aws-amplify/storage';
-import { withAuthenticator } from '@aws-amplify/ui-react'; // Use withAuthenticator for authentication
-import './WasteManager.css'; // Import the CSS file for styling
-import axios from 'axios'; // Import axios for API calls
+import { withAuthenticator } from '@aws-amplify/ui-react';
+import './WasteManager.css';
+import axios from 'axios';
 
 function WasteManager({ user }) {
     const [selectedImage, setSelectedImage] = useState(null);
@@ -18,18 +19,14 @@ function WasteManager({ user }) {
     };
 
     const handleUpload = async () => {
-        if (!selectedImage) {
-            return;
-        }
+        if (!selectedImage) return;
 
-        // Generate a unique file name
         const fileName = `${Date.now()}_${selectedImage.name}`;
 
         try {
-            // Upload the image directly to the S3 bucket
             await uploadData({
-                path: fileName, // The file path in S3
-                data: selectedImage, // The image file to upload
+                path: fileName,
+                data: selectedImage,
                 options: {
                     contentType: selectedImage.type,
                     onProgress: ({ transferredBytes, totalBytes }) => {
@@ -44,15 +41,14 @@ function WasteManager({ user }) {
             setError(null);
             console.log('Image uploaded successfully!');
 
-            // Call the API after successful upload
             const apiResponse = await checkRecyclability(fileName);
             if (apiResponse) {
-                setResponseMessage(`Recyclability: ${apiResponse.RecyclabilityStatement}`); // Display Lambda response message
+                setResponseMessage(`Recyclability: ${apiResponse.RecyclabilityStatement}`);
             } else {
-                setResponseMessage("Could not determine recyclability."); // Default message
+                setResponseMessage("Could not determine recyclability.");
             }
 
-            setSelectedImage(null); // Clear the selected image after upload
+            setSelectedImage(null);
         } catch (err) {
             console.error("Error uploading file: ", err);
             setError("Failed to upload image. Please try again.");
@@ -60,12 +56,11 @@ function WasteManager({ user }) {
         }
     };
 
-    // Function to call the API and check recyclability
     const checkRecyclability = async (fileName) => {
-        const apiUrl = 'https://gy9oxroiz7.execute-api.eu-west-2.amazonaws.com/main/waste'; // Your API Gateway URL
-        
+        const apiUrl = 'https://gy9oxroiz7.execute-api.eu-west-2.amazonaws.com/main/waste';
+
         const data = {
-            fileName: fileName // Send the file name to the Lambda function
+            fileName: fileName,
         };
 
         try {
@@ -74,22 +69,22 @@ function WasteManager({ user }) {
                     "Content-Type": "application/json",
                 },
             });
-            console.log('API Response:', response.data); // Debugging
-            return response.data; // Return the response for further use
+            console.log('API Response:', response.data);
+            return response.data;
         } catch (error) {
             console.error("Error calling API:", error);
             setResponseMessage("Error contacting the API.");
-            return null; // Default error message
+            return null;
         }
     };
 
     return (
         <div className="waste-manager">
             <h2>Upload Your Waste Item</h2>
-            <input 
-                type="file" 
-                accept="image/*" 
-                onChange={handleImageChange} 
+            <input
+                type="file"
+                accept="image/*"
+                onChange={handleImageChange}
                 className="file-input"
             />
             {selectedImage && (
@@ -121,5 +116,4 @@ function WasteManager({ user }) {
     );
 }
 
-// Export the component wrapped with the Authenticator
 export default withAuthenticator(WasteManager);
