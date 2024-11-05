@@ -80,7 +80,7 @@ function App() {
               <header className="App-header">
                 <img src={logo} alt="Smart Waste Logo" className="logo" />
                 <h1 className="title">WasteWise</h1>
-                <p className="subtitle">one click closer to a greener tomorrow</p>
+                <p className="subtitle">'one click closer to a greener tomorrow'</p>
                 <WasteManager />
                 <button 
                   onClick={signOut} 
