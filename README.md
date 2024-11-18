@@ -1,70 +1,57 @@
-# Getting Started with Create React App
+# Smart Waste Management App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a web application that allows users to upload images of waste items and determines whether they are recyclable or not using AWS services. The app integrates AWS Amplify, AWS Lambda, Rekognition, API Gateway, DynamoDB, and S3 for a seamless user experience and backend automation.
 
-## Available Scripts
+## Features:
 
-In the project directory, you can run:
+- User Authentication:  Sign in via AWS Cognito.
+- Image Upload: Users upload waste images that are stored in an S3 bucket.
+- Recyclability Check: Uses AWS Rekognition to determine if the item is recyclable.
+- Data Storage: Analysis results are saved in DynamoDB.
+- API Integration: API Gateway connects the backend to the frontend.
 
-### `npm start`
+### Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Before you can run this project, ensure you have the following installed:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Node.js (v16 or later)
+AWS Amplify CLI (npm install -g @aws-amplify/cli)
+AWS Account
+A GitHub account (for connecting to AWS Amplify)
 
-### `npm test`
+#### Steps to Set Up
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1) Clone this repo to your local machine using the following command:
 
-### `npm run build`
+git clone https://github.com/your-username/smart-waste-management.git
+cd smart-waste-management
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2) Install Dependencies
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+npm install
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3) Configure the AWS Amplify CLI
 
-### `npm run eject`
+amplify configure
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+4) Intalise the amplify project
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+amplify init
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+5) Set up user authentication with Cognito:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+amplify add auth
 
-## Learn More
+6) Set up S3 storage for image uploads:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+amplify add storage
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+7) Push changes
 
-### Code Splitting
+amplify push
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+8) Run the app locally
 
-### Analyzing the Bundle Size
+npm start
+   
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
