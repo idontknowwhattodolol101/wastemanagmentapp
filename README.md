@@ -24,34 +24,35 @@ A GitHub account (for connecting to AWS Amplify)
 1) Clone this repo to your local machine using the following command:
 
 git clone https://github.com/your-username/smart-waste-management.git
+
 cd smart-waste-management
 
 2) Install Dependencies
 
-npm install
+   - npm install
 
 3) Configure the AWS Amplify CLI
 
-amplify configure
+   -amplify configure
 
 4) Intalise the amplify project
 
-amplify init
+   -amplify init
 
 5) Set up user authentication with Cognito:
 
-amplify add auth
+   -amplify add auth
 
 6) Set up S3 storage for image uploads:
 
-amplify add storage
+   -amplify add storage
 
 7) Push changes
 
-amplify push
+   -amplify push
 
 8) Run the app locally
 
-npm start
+   -npm start
    
 
