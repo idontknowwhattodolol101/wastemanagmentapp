@@ -6,10 +6,9 @@ import '@aws-amplify/ui-react/styles.css';
 import awsExports from './aws-exports';
 import WasteManager from './WasteManager';
 import backgroundImage from './background.png'; 
-import signup from './signup';
+import Signup from './SignUp';
 import logo from './logo.png'; 
 import { BrowserRouter as Router, Route, Switch, useHistory } from 'react-router-dom'
-
 
 Amplify.configure(awsExports);
 
