@@ -6,9 +6,10 @@ import '@aws-amplify/ui-react/styles.css';
 import awsExports from './aws-exports';
 import WasteManager from './WasteManager';
 import backgroundImage from './background.png'; 
+import signup from './signup';
 import logo from './logo.png'; 
-import { BrowserRouter as Router, Route, Switch, useHistory } from 'react-router-dom'; // Routing imports
-import Signup from './Signup'; // Import the Signup component
+import { BrowserRouter as Router, Route, Switch, useHistory } from 'react-router-dom'
+
 
 Amplify.configure(awsExports);
 
@@ -48,17 +49,17 @@ const theme = {
 
 function App() {
   const [errorMessage, setErrorMessage] = useState('');
-  const [showSignUp, setShowSignUp] = useState(false);
+  const [showsignup, setShowsignup] = useState(false);
   const history = useHistory(); // Use history for redirect
 
-  const handleSignIn = async (username, password) => {
+  const handlesignin = async (username, password) => {
     setErrorMessage('');
     try {
-      await Auth.signIn(username, password);
+      await Auth.signin(username, password);
     } catch (error) {
       if (error.code === 'UserNotFoundException') {
         setErrorMessage('User does not exist. Would you like to sign up?');
-        setShowSignUp(true);
+        setShowsignup(true);
       } else if (error.code === 'NotAuthorizedException') {
         setErrorMessage('Incorrect username or password. Please try again.');
       } else {
@@ -67,7 +68,7 @@ function App() {
     }
   };
 
-  const handleSignUpRedirect = () => {
+  const handlesignupRedirect = () => {
     // Redirect to the sign-up page
     history.push('/signup'); // Redirects to the signup route
   };
@@ -89,7 +90,7 @@ function App() {
         >
           <Switch>
             <Route exact path="/" >
-              <Authenticator hideSignUp={true}>
+              <Authenticator hidesignup={true}>
                 {({ signOut, user }) => (
                   <main>
                     <header className="App-header">
@@ -100,10 +101,10 @@ function App() {
                       {!user ? (
                         <div className="auth-container">
                           {errorMessage && <p className="error-message">{errorMessage}</p>}
-                          {showSignUp && (
+                          {showsignup && (
                             <button 
                               className="redirect-signup-button" 
-                              onClick={handleSignUpRedirect}
+                              onClick={handlesignupRedirect}
                             >
                               Sign Up
                             </button>
@@ -131,8 +132,8 @@ function App() {
               </Authenticator>
             </Route>
 
-            {/* Signup Route */}
-            <Route path="/signup" component={Signup} />
+            {/* signup Route */}
+            <Route path="/signup" component={signup} />
           </Switch>
         </div>
       </ThemeProvider>

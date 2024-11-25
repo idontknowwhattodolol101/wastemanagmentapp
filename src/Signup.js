@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 import { Auth } from 'aws-amplify';
 import { useHistory } from 'react-router-dom';
-import './SignUp.css';
+import './signup.css';
 
-const SignUp = () => {
+const signup = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const history = useHistory();
 
-  const handleSignUp = async () => {
+  const handlesignup = async () => {
     setErrorMessage('');
     try {
-      await Auth.signUp({
+      await Auth.signup({
         username,
         password,
         attributes: {
@@ -54,9 +54,9 @@ const SignUp = () => {
         />
       </div>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
-      <button onClick={handleSignUp}>Sign Up</button>
+      <button onClick={handlesignup}>Sign Up</button>
     </div>
   );
 };
 
-export default Signup;
+export default signup;
