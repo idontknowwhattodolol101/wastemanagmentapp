@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Auth } from 'aws-amplify';
 import { useHistory } from 'react-router-dom';
-import './signup.css';
+import './Signup.css';
 
 const signup = () => {
   const [username, setUsername] = useState('');
