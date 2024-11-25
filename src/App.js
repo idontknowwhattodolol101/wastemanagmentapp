@@ -1,33 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
-import { Amplify } from 'aws-amplify';
+import { Amplify, Auth } from 'aws-amplify';
 import { Authenticator, ThemeProvider, View } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import awsExports from './aws-exports';
 import WasteManager from './WasteManager';
-import backgroundImage from './background.png'; // Background image
-import logo from './logo.png'; // Logo image
+import backgroundImage from './background.png'; 
+import logo from './logo.png'; 
 
 Amplify.configure(awsExports);
 
-// Custom Theme for Authenticator with eco-friendly styling
 const theme = {
   name: 'smart-waste-theme',
   tokens: {
     colors: {
       background: {
-        primary: { value: '#e8f5e9' }, // Very light green background
-        secondary: { value: '#4a8d5f' }, // Dark green for headers and buttons
+        primary: { value: '#e8f5e9' }, 
+        secondary: { value: '#4a8d5f' }, 
       },
       font: {
-        primary: { value: '#2d5a34' }, // Dark green text
-        secondary: { value: '#555' },   // Secondary font color
+        primary: { value: '#2d5a34' }, 
+        secondary: { value: '#555' },   
       },
       border: {
-        primary: { value: '#4CAF50' },  // Green for button borders and inputs
+        primary: { value: '#4CAF50' }, 
       },
       brand: {
-        primary: { value: '#4CAF50' },  // Green brand color for buttons
+        primary: { value: '#4CAF50' }, 
       },
     },
     components: {
@@ -44,7 +43,7 @@ const theme = {
         padding: { value: '12px 24px' },
         fontSize: { value: '1rem' },
         _hover: {
-          backgroundColor: { value: '#388e3c' }, // Darker green on hover
+          backgroundColor: { value: '#388e3c' },
         },
       },
       input: {
@@ -60,6 +59,30 @@ const theme = {
 };
 
 function App() {
+  const [errorMessage, setErrorMessage] = useState('');
+  const [showSignUp, setShowSignUp] = useState(false);
+
+  const handleSignIn = async (username, password) => {
+    setErrorMessage('');
+    try {
+      await Auth.signIn(username, password);
+    } catch (error) {
+      if (error.code === 'UserNotFoundException') {
+        setErrorMessage('User does not exist. Would you like to sign up?');
+        setShowSignUp(true);
+      } else if (error.code === 'NotAuthorizedException') {
+        setErrorMessage('Incorrect username or password. Please try again.');
+      } else {
+        setErrorMessage('An error occurred. Please try again later.');
+      }
+    }
+  };
+
+  const handleSignUpRedirect = () => {
+    setShowSignUp(false);
+    window.location.href = '/signup';
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <div 
@@ -74,25 +97,42 @@ function App() {
           justifyContent: 'center',
         }}
       >
-        <Authenticator hideSignUp>
-          {({ signOut }) => (
+        <Authenticator hideSignUp={true}>
+          {({ signOut, user }) => (
             <main>
               <header className="App-header">
                 <img src={logo} alt="Smart Waste Logo" className="logo" />
                 <h1 className="title">WasteWise</h1>
                 <p className="subtitle">'one click closer to a greener tomorrow'</p>
-                <WasteManager />
-                <button 
-                  onClick={signOut} 
-                  style={{ 
-                    margin: '20px', 
-                    fontSize: '0.8rem', 
-                    padding: '5px 10px', 
-                    marginTop: '20px'
-                  }}
-                >
-                  Sign Out
-                </button>
+
+                {!user ? (
+                  <div className="auth-container">
+                    {errorMessage && <p className="error-message">{errorMessage}</p>}
+                    {showSignUp && (
+                      <button 
+                        className="redirect-signup-button" 
+                        onClick={handleSignUpRedirect}
+                      >
+                        Sign Up
+                      </button>
+                    )}
+                  </div>
+                ) : (
+                  <>
+                    <WasteManager />
+                    <button 
+                      onClick={signOut} 
+                      style={{ 
+                        margin: '20px', 
+                        fontSize: '0.8rem', 
+                        padding: '5px 10px', 
+                        marginTop: '20px'
+                      }}
+                    >
+                      Sign Out
+                    </button>
+                  </>
+                )}
               </header>
             </main>
           )}
