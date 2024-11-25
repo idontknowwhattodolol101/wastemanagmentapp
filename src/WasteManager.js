@@ -80,13 +80,17 @@ function WasteManager({ user }) {
 
     return (
         <div className="waste-manager">
-            <h2>Upload Your Waste Item</h2>
-            <input
-                type="file"
-                accept="image/*"
-                onChange={handleImageChange}
-                className="file-input"
-            />
+            {!selectedImage && (
+                <h2 className="upload-title">Upload Your Waste Item</h2>
+            )}
+            {!selectedImage && (
+                <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageChange}
+                    className="file-input"
+                />
+            )}
             {selectedImage && (
                 <div className="image-preview">
                     <div className="image-container">

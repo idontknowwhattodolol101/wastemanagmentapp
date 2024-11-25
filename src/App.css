@@ -192,3 +192,33 @@ input[type="file"] {
     font-size: 0.9rem;
   }
 }
+
+/* New styles for error messages and redirect button */
+.auth-container {
+  max-width: 400px;
+  margin: auto;
+  text-align: left;
+}
+
+.error-message {
+  color: #d32f2f;
+  font-size: 0.9rem;
+  margin: 15px 0;
+  text-align: center;
+}
+
+.redirect-signup-button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #ff9800;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.redirect-signup-button:hover {
+  background-color: #e68a00;
+}
