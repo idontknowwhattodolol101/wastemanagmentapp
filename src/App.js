@@ -7,6 +7,8 @@ import awsExports from './aws-exports';
 import WasteManager from './WasteManager';
 import backgroundImage from './background.png'; 
 import logo from './logo.png'; 
+import { BrowserRouter as Router, Route, Switch, useHistory } from 'react-router-dom'; // Routing imports
+import Signup from './Signup'; // Import the Signup component
 
 Amplify.configure(awsExports);
 
@@ -14,20 +16,10 @@ const theme = {
   name: 'smart-waste-theme',
   tokens: {
     colors: {
-      background: {
-        primary: { value: '#e8f5e9' }, 
-        secondary: { value: '#4a8d5f' }, 
-      },
-      font: {
-        primary: { value: '#2d5a34' }, 
-        secondary: { value: '#555' },   
-      },
-      border: {
-        primary: { value: '#4CAF50' }, 
-      },
-      brand: {
-        primary: { value: '#4CAF50' }, 
-      },
+      background: { primary: { value: '#e8f5e9' }, secondary: { value: '#4a8d5f' } },
+      font: { primary: { value: '#2d5a34' }, secondary: { value: '#555' } },
+      border: { primary: { value: '#4CAF50' } },
+      brand: { primary: { value: '#4CAF50' } },
     },
     components: {
       card: {
@@ -42,17 +34,13 @@ const theme = {
         borderRadius: { value: '20px' },
         padding: { value: '12px 24px' },
         fontSize: { value: '1rem' },
-        _hover: {
-          backgroundColor: { value: '#388e3c' },
-        },
+        _hover: { backgroundColor: { value: '#388e3c' } },
       },
       input: {
         borderRadius: { value: '10px' },
         padding: { value: '12px 15px' },
         fontSize: { value: '1rem' },
-        _focus: {
-          borderColor: { value: '#4CAF50' },
-        },
+        _focus: { borderColor: { value: '#4CAF50' } },
       },
     },
   },
@@ -61,6 +49,7 @@ const theme = {
 function App() {
   const [errorMessage, setErrorMessage] = useState('');
   const [showSignUp, setShowSignUp] = useState(false);
+  const history = useHistory(); // Use history for redirect
 
   const handleSignIn = async (username, password) => {
     setErrorMessage('');
@@ -79,66 +68,75 @@ function App() {
   };
 
   const handleSignUpRedirect = () => {
-    setShowSignUp(false);
-    window.location.href = '/signup';
+    // Redirect to the sign-up page
+    history.push('/signup'); // Redirects to the signup route
   };
 
   return (
-    <ThemeProvider theme={theme}>
-      <div 
-        className="App"
-        style={{
-          backgroundImage: `url(${backgroundImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          height: '100vh',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        <Authenticator hideSignUp={true}>
-          {({ signOut, user }) => (
-            <main>
-              <header className="App-header">
-                <img src={logo} alt="Smart Waste Logo" className="logo" />
-                <h1 className="title">WasteWise</h1>
-                <p className="subtitle">'one click closer to a greener tomorrow'</p>
+    <Router>
+      <ThemeProvider theme={theme}>
+        <div 
+          className="App"
+          style={{
+            backgroundImage: `url(${backgroundImage})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            height: '100vh',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <Switch>
+            <Route exact path="/" >
+              <Authenticator hideSignUp={true}>
+                {({ signOut, user }) => (
+                  <main>
+                    <header className="App-header">
+                      <img src={logo} alt="Smart Waste Logo" className="logo" />
+                      <h1 className="title">WasteWise</h1>
+                      <p className="subtitle">'one click closer to a greener tomorrow'</p>
 
-                {!user ? (
-                  <div className="auth-container">
-                    {errorMessage && <p className="error-message">{errorMessage}</p>}
-                    {showSignUp && (
-                      <button 
-                        className="redirect-signup-button" 
-                        onClick={handleSignUpRedirect}
-                      >
-                        Sign Up
-                      </button>
-                    )}
-                  </div>
-                ) : (
-                  <>
-                    <WasteManager />
-                    <button 
-                      onClick={signOut} 
-                      style={{ 
-                        margin: '20px', 
-                        fontSize: '0.8rem', 
-                        padding: '5px 10px', 
-                        marginTop: '20px'
-                      }}
-                    >
-                      Sign Out
-                    </button>
-                  </>
+                      {!user ? (
+                        <div className="auth-container">
+                          {errorMessage && <p className="error-message">{errorMessage}</p>}
+                          {showSignUp && (
+                            <button 
+                              className="redirect-signup-button" 
+                              onClick={handleSignUpRedirect}
+                            >
+                              Sign Up
+                            </button>
+                          )}
+                        </div>
+                      ) : (
+                        <>
+                          <WasteManager />
+                          <button 
+                            onClick={signOut} 
+                            style={{ 
+                              margin: '20px', 
+                              fontSize: '0.8rem', 
+                              padding: '5px 10px', 
+                              marginTop: '20px'
+                            }}
+                          >
+                            Sign Out
+                          </button>
+                        </>
+                      )}
+                    </header>
+                  </main>
                 )}
-              </header>
-            </main>
-          )}
-        </Authenticator>
-      </div>
-    </ThemeProvider>
+              </Authenticator>
+            </Route>
+
+            {/* Signup Route */}
+            <Route path="/signup" component={Signup} />
+          </Switch>
+        </div>
+      </ThemeProvider>
+    </Router>
   );
 }
 
