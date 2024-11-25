@@ -1,5 +1,5 @@
-/* General App styling */
-.App {
+ /* General App styling */
+ .App {
   text-align: center;
   background-color: #f3f9f1; 
   min-height: 100vh;
@@ -221,4 +221,4 @@ input[type="file"] {
 
 .redirect-signup-button:hover {
   background-color: #e68a00;
-}
+} 
